@@ -27,7 +27,7 @@ class _ListSongState extends State<ListSong> {
               child: Column(
                 children: [
                   // Image.network(album.imageUrls),
-                  Text(album.songs[index]),
+                  Text(album.songs[index],),
                 ],
               ),
             ),

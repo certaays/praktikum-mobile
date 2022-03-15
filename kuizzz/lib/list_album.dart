@@ -29,8 +29,8 @@ class ListAlbum extends StatelessWidget {
             itemCount: topAlbumList.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
-              crossAxisSpacing: 4.0,
-              mainAxisSpacing: 4.0
+              crossAxisSpacing: 8.0,
+              mainAxisSpacing: 8.0
             ),
         )
     );
