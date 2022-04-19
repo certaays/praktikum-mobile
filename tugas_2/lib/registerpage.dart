@@ -41,11 +41,14 @@ class _RegisterPageState extends State<RegisterPage> {
                       hintText: "Password"
                   )
               ),
-              ElevatedButton(
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
                 onPressed: () {
                   _processRegist();
                 },
                 child: Text("Register"),
+              )
               )
             ],
           ),
