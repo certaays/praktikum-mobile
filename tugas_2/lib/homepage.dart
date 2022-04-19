@@ -50,13 +50,16 @@ class _HomePageState extends State<HomePage> {
                   child: Text("Login"),
                 ),
               ),
-              ElevatedButton(
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(builder: (context) => RegisterPage())
                   );
                 },
                 child: Text("Register"),
+              )
               )
             ],
           ),
