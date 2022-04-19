@@ -41,11 +41,14 @@ class _HomePageState extends State<HomePage> {
                       hintText: "Password"
                   )
               ),
-              ElevatedButton(
-                onPressed: () {
-                  _processLogin();
-                },
-                child: Text("Login"),
+              Container(
+                width: MediaQuery.of(context).size.width,
+                child: ElevatedButton(
+                  onPressed: () {
+                    _processLogin();
+                  },
+                  child: Text("Login"),
+                ),
               ),
               ElevatedButton(
                 onPressed: () {
