@@ -25,20 +25,16 @@ class BaseNetwork {
     }
   }
 
-  Future<FollowingModel> fetchFollowing(String partUrl) async {
+  static Future<List<FollowingModel>> fetchData(String partUrl) async {
     final String fullUrl = baseUrl + "/" + partUrl;
-    final response = await http
-        .get(Uri.parse(fullUrl));
-
-    if (response.statusCode == 200) {
-      // If the server did return a 200 OK response,
-      // then parse the JSON.
-      return FollowingModel.fromJson(jsonDecode(response.body));
-    } else {
-      // If the server did not return a 200 OK response,
-      // then throw an exception.
-      throw Exception('Failed to load album');
-    }
+    final response = await http.get(Uri.parse(fullUrl));
+    return _processResponse2(response);
+  }
+  static Future<List<FollowingModel>> _processResponse2(
+      http.Response response) async {
+    final body = response.body;
+    final jsonBody = json.decode(body);
+    return jsonBody.map<FollowingModel>((r) => FollowingModel.fromJson(r)).toList();
   }
 
   static void debugPrint(String value) {

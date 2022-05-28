@@ -36,9 +36,14 @@ class _FollowingState extends State<Following> {
               // _buildErrorSection();
           }
           if (snapshot.hasData) {
-            FollowingModel followingModel =
-            FollowingModel.fromJson(snapshot.data);
-            return _buildSuccessSection(followingModel);
+            List<FollowingModel>? followingModel = snapshot.data;
+            if(snapshot.data!.isNotEmpty){
+              return _buildSuccessSection(followingModel);
+            }
+            else{
+              return Text("belum ada following");
+            }
+            // FollowingModel.fromJson(snapshot.data);
           }
           return _buildLoadingSection();
         },
@@ -57,18 +62,24 @@ class _FollowingState extends State<Following> {
       child: CircularProgressIndicator(),
     );
   }
-  Widget _buildSuccessSection(FollowingModel data) {
+  Widget _buildSuccessSection(List<FollowingModel>? data) {
     return
-      // Text("coba");
       ListView.builder(
-      itemCount: data.toJson().length,
+      itemCount: data!.length,
       itemBuilder: (BuildContext context, int index) {
-        return _buildItemCountries("${data.login}");
+        return _buildItemCountries(
+          data[index].login
+        );
       },
     );
   }
-  Widget _buildItemCountries(String value) {
-    return Text(value);
+  Widget _buildItemCountries(String? value) {
+    return Card(
+      child: ListTile(
+        title: Text(value!),
+        onTap: (){},
+      ),
+    );
   }
 
 }
